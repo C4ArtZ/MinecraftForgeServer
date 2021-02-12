@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "I'm fabric!"
+echo "Currently not supported :("
