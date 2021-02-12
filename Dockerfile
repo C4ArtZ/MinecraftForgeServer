@@ -1,7 +1,7 @@
 FROM debian:latest
 
 RUN apt-get update && \
-	apt-get -y install --no-install-recommends screen curl jq unzip openjdk-15-jdk && \
+	apt-get -y install --no-install-recommends screen curl jq unzip && \
 	rm -rf /var/lib/apt/lists/*
 
 ENV DATA_DIR="/serverdata"
