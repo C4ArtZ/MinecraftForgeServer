@@ -1,9 +1,9 @@
 #!/bin/bash
-echo "[SERVER] Checking if UID: ${UID} matches user..."
+echo "[SERVER] Checking if UID: ${UID} matches user"
 usermod -u ${UID} ${USER}
-echo "[SERVER] Checking if GID: ${GID} matches user..."
+echo "[SERVER] Checking if GID: ${GID} matches user"
 usermod -g ${GID} ${USER}
-echo "[SERVER] Setting umask to ${UMASK}..."
+echo "[SERVER] Setting umask to ${UMASK}"
 umask ${UMASK}
 
 chown -R ${UID}:${GID} /opt/scripts
@@ -18,15 +18,19 @@ term_handler() {
 
 trap 'kill ${!}; term_handler' SIGTERM
 
-echo "[SERVER] Checking for Modloader..."
+echo "[SERVER] Checking for Modloader"
 
-if [[${MODLOADER} -e "forge"]]
+if [${MODLOADER} -e "forge"]
 then
     echo "[SERVER] Modloader 'forge' was selected."
     su ${USER} -c "/opt/scripts/start-forge.sh" &
     killpid="$!"
-elif [[${MODLOADER} -e "fabric"]]
+elif [${MODLOADER} -e "fabric"]
 then
     echo "[SERVER] Modloader 'fabric' was selected."
     su ${USER} -c "/opt/scripts/start-fabric.sh" &
     killpid="$!"
+else
+    echo "[SERVER] No modloader selected. Going to sleep..."
+    sleep infinity
+fi
