@@ -1,17 +1,15 @@
 FROM debian:latest
 
 RUN apt-get update && \
-	apt-get -y install --no-install-recommends screen curl jq unzip && \
+	apt-get -y install --no-install-recommends screen curl jq unzip openjdk-15-jdk && \
 	rm -rf /var/lib/apt/lists/*
 
 ENV DATA_DIR="/serverdata"
 ENV SERVER_DIR="${DATA_DIR}/serverfiles"
-ENV RUNTIME="basicjre"
-ENV EXECUTABLE="server"
 ENV GAME_VERSION=""
 ENV GAME_PARAMETERS=""
 ENV GAME_PORT=25565
-ENV XMX=1024
+ENV XMX=2048
 ENV XMS=1024
 ENV EXTRA_JVM_PARAMETERS=""
 ENV ACCEPT_EULA="false"
@@ -24,6 +22,9 @@ ENV MODLOADER="forge"
 
 ADD /scripts/ /opt/scripts/
 
-RUN mkdir $DATA_DIR && mkdir $SERVER_DIR && useradd -d $DATA_DIR -s /bin/bash $USER && chown -R $USER $DATA_DIR && ulimit -n 2048 && chmod -R 770 /opt/scripts/
+RUN mkdir $DATA_DIR && \
+    mkdir $SERVER_DIR && \
+    useradd -d $DATA_DIR -s /bin/bash $USER && \
+    chown -R $USER $DATA_DIR && ulimit -n 2048 && chmod -R 770 /opt/scripts/
 
 ENTRYPOINT ["/opt/scripts/start.sh"]
