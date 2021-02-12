@@ -6,9 +6,6 @@ usermod -g ${GID} ${USER}
 echo "[SERVER] Setting umask to ${UMASK}..."
 umask ${UMASK}
 
-
-
-echo "---Starting...---"
 chown -R ${UID}:${GID} /opt/scripts
 chown -R ${UID}:${GID} ${DATA_DIR}
 
