@@ -72,7 +72,7 @@ fi
 # Starting server
 echo "[SERVER] Starting server"
 cd ${SERVER_DIR}
-screen -S Minecraft -L -Logfile ${SERVER_DIR}/masterLog.0 -d -m ${SERVER_DIR}/runtime/jre15/bin/java ${EXTRA_JVM_PARAMS} -Xmx${XMX}M -Xms${XMS}M -jar ${SERVER_DIR}/server.jar nogui ${GAME_PARAMS}
+screen -S Minecraft -L -Logfile ${SERVER_DIR}/masterLog.0 -d -m ${SERVER_DIR}/runtime/jre15/bin/java ${EXTRA_JVM_PARAMETERS} -Xmx${XMX}M -Xms${XMS}M -jar ${SERVER_DIR}/server.jar nogui ${GAME_PARAMETERS}
 sleep 2
 
 
