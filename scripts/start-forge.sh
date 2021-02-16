@@ -60,22 +60,22 @@ else
 fi
 
 
-# Config
-# echo "[SERVER] Checking for server properties"
-# if [ ! -f ${SERVER_DIR}/server.properties ]
-# then
-#     echo "[SERVER] Could not find server properties"
-#     echo "[SERVER] Getting server properties"
-#     if wget https://raw.githubusercontent.com/C4ArtZ/MinecraftForgeServer/master/config/server.properties
-#     then
-#         echo "[SERVER] Download successful"
-#     else
-#         echo "[SERVER] Could not download server properties. Going to sleep..."
-#         sleep infinity
-#     fi
-# else
-#     echo "[SERVER] Found server properties"
-# fi
+Config
+echo "[SERVER] Checking for server properties"
+if [ ! -f ${SERVER_DIR}/server.properties ]
+then
+    echo "[SERVER] Could not find server properties"
+    echo "[SERVER] Getting server properties"
+    if wget https://raw.githubusercontent.com/C4ArtZ/MinecraftForgeServer/master/config/server.properties
+    then
+        echo "[SERVER] Download successful"
+    else
+        echo "[SERVER] Could not download server properties. Going to sleep..."
+        sleep infinity
+    fi
+else
+    echo "[SERVER] Found server properties"
+fi
 
 
 # Starting server
