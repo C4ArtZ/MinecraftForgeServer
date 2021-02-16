@@ -20,12 +20,12 @@ trap 'kill ${!}; term_handler' SIGTERM
 
 echo "[SERVER] Checking for Modloader"
 echo "${MODLOADER}"
-if [["{$MODLOADER}" = "forge"]]
+if [["${MODLOADER}" = "forge"]]
 then
     echo "[SERVER] Modloader 'forge' was selected."
     su ${USER} -c "/opt/scripts/start-forge.sh" &
     killpid="$!"
-elif [[$MODLOADER = "fabric"]]
+elif [["${MODLOADER}" = "fabric"]]
 then
     echo "[SERVER] Modloader 'fabric' was selected."
     su ${USER} -c "/opt/scripts/start-fabric.sh" &
