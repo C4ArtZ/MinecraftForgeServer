@@ -51,10 +51,12 @@ else
         echo "[SERVER] Could not download executable. Going to sleep..."
         sleep infinity
     fi
-    echo "[SERVER] Installing Forge"
+    echo "[SERVER] Installing Server"
     chmod 777 ${SERVER_DIR}/server.jar
     cd ${SERVER_DIR}
     ${SERVER_DIR}/runtime/jre15/bin/java -jar ${SERVER_DIR}/server.jar --installServer
+    ${SERVER_DIR}/runtime/jre15/bin/java -jar ${SERVER_DIR}/minecraft_server*.jar
+    chmod 777 ${SERVER_DIR}/minecraft_server*.jar
 fi
 
 
