@@ -25,7 +25,7 @@ then
 			sleep infinity
 		fi
 		mkdir ${SERVER_DIR}/runtime/jre15
-        tar --directory ${SERVER_DIR}/runtime/jre15 --strip-components=1 -xvzf ${SERVER_DIR}/runtime/jre15.tar.gz
+        tar --directory ${SERVER_DIR}/runtime/jre15 -xvzf ${SERVER_DIR}/runtime/jre15.tar.gz
         rm -rf ${SERVER_DIR}/runtime/jre15.tar.gz
 else
     echo "[SERVER] Found jre15"
