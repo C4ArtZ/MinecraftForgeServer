@@ -50,7 +50,7 @@ else
     fi
     #mv forge*.jar server.jar
     echo "[SERVER] Installing Forge"
-    server.jar --installServer
+    ${SERVER_DIR}/runtime/jre15/bin/java -jar server.jar --installServer
 fi
 
 
