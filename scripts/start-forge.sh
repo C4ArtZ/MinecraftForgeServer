@@ -1,5 +1,4 @@
 #!/bin/bash
-echo "I'm forge!"
 
 
 # Runtime
@@ -17,7 +16,7 @@ then
     	URL="https://github.com/AdoptOpenJDK/openjdk15-binaries/releases/download/jdk-15.0.1%2B9/OpenJDK15U-jre_x64_linux_hotspot_15.0.1_9.tar.gz"
     	echo "[SERVER] Getting OpenJDK15"
 		cd ${SERVER_DIR}/runtime
-		if wget -q -nc --show-progress --progress=bar:force:noscroll -O ${SERVER_DIR}/runtime/jre15.tar.gz ${URL} ; then
+		if wget -q -nc -O ${SERVER_DIR}/runtime/jre15.tar.gz ${URL} ; then
 			echo "[SERVER] Downloaded successful"
 		else
 			echo "[SERVER] Could not download OpenJDK15. Going to sleep..."
