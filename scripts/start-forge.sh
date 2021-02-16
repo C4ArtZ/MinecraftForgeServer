@@ -13,7 +13,7 @@ fi
 
 if [ -z "$(find ${SERVER_DIR}/runtime -name jre*)" ]
 then
-    	URL="https://github.com/AdoptOpenJDK/openjdk15-binaries/releases/download/jdk-15.0.1%2B9/OpenJDK15U-jre_x64_linux_hotspot_15.0.1_9.tar.gz"
+    	URL="https://download.java.net/java/GA/jdk15.0.2/0d1cfde4252546c6931946de8db48ee2/7/GPL/openjdk-15.0.2_linux-x64_bin.tar.gz"
     	echo "[SERVER] Getting OpenJDK15"
 		cd ${SERVER_DIR}/runtime
         wget -q -nc -O ${SERVER_DIR}/runtime/jre15.tar.gz ${URL}
@@ -38,7 +38,7 @@ if [! -f ${SERVER_DIR}/server.jar ]
 then
 	echo "[SERVER] Could not find executable"
     echo "[SERVER] Getting Forge 1.16.4"
-	wget https://files.minecraftforge.net/maven/net/minecraftforge/forge/1.16.4-35.1.4/forge-1.16.4-35.1.4-installer.jar
+	wget -q -nc -O ${SERVER_DIR}/server.jar https://files.minecraftforge.net/maven/net/minecraftforge/forge/1.16.4-35.1.4/forge-1.16.4-35.1.4-installer.jar
     if [ $? -ne 0 ]
     then
         echo "[SERVER] Download successful"
@@ -46,7 +46,8 @@ then
         echo "[SERVER] Could not download executable. Going to sleep..."
         sleep infinity
     fi
-    mv forge*.jar server.jar
+    #mv forge*.jar server.jar
+    echo "[SERVER] Installing Forge"
     server.jar --installServer
 else
 	echo "[SERVER] Found executable"
