@@ -19,7 +19,7 @@ term_handler() {
 trap 'kill ${!}; term_handler' SIGTERM
 
 echo "[SERVER] Checking for Modloader"
-echo "${MODLOADER}"
+echo "${MODLOADER}";
 if [["{$MODLOADER}" = "forge"]]
 then
     echo "[SERVER] Modloader 'forge' was selected."
