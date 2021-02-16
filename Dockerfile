@@ -1,7 +1,7 @@
 FROM debian:latest
 
 RUN apt-get update && \
-	apt-get -y install --no-install-recommends screen curl jq unzip wget && \
+	apt-get -y install --no-install-recommends screen curl jq unzip wget apt-transport-https && \
     apt-get upgrade -y &&\
 	rm -rf /var/lib/apt/lists/*
 
