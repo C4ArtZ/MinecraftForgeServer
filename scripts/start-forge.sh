@@ -57,6 +57,8 @@ else
     ${SERVER_DIR}/runtime/jre15/bin/java -jar ${SERVER_DIR}/server.jar --installServer
     ${SERVER_DIR}/runtime/jre15/bin/java -jar ${SERVER_DIR}/minecraft_server*.jar
     chmod 777 ${SERVER_DIR}/minecraft_server*.jar
+    chmod 777 ${SERVER_DIR}/server.properties
+    chmod 777 ${SERVER_DIR}/eula.txt
 fi
 
 
