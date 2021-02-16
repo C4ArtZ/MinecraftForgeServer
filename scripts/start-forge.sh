@@ -60,7 +60,7 @@ else
 fi
 
 
-Config
+#Config
 echo "[SERVER] Checking for server properties"
 if [ ! -f ${SERVER_DIR}/server.properties ]
 then
@@ -118,9 +118,9 @@ screen -wipe 2&>/dev/null
 echo "[SERVER] Waiting for new logs"
 sleep 30
 if [ -f ${SERVER_DIR}/logs/latest.log ]; then
-	screen -S watchdog -d -m /opt/scripts/start-watchdog.sh
+	screen -S watchdog -d -m /opt/scripts/watchdog.sh
 	tail -F ${SERVER_DIR}/logs/latest.log
 else
-	screen -S watchdog -d -m /opt/scripts/start-watchdog.sh
+	screen -S watchdog -d -m /opt/scripts/watchdog.sh
 	tail -f ${SERVER_DIR}/masterLog.0
 fi
