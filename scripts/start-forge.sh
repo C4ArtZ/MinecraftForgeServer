@@ -17,7 +17,8 @@ then
     	echo "[SERVER] Getting OpenJDK15"
 		cd ${SERVER_DIR}/runtime
         wget -nc --show-progress --progress=bar:force:noscroll -O ${SERVER_DIR}/runtime/jre15.tar.gz "${URL}"
-		if [ $? -ne 0 ]
+        echo $?
+		if [ $? == 0 ]
         then
 			echo "[SERVER] Downloaded successful"
 		else
@@ -42,7 +43,8 @@ else
 	echo "[SERVER] Could not find executable"
     echo "[SERVER] Getting Forge 1.16.4"
 	wget -nc --show-progress --progress=bar:force:noscroll -O ${SERVER_DIR}/server.jar https://files.minecraftforge.net/maven/net/minecraftforge/forge/1.16.4-35.1.4/forge-1.16.4-35.1.4-installer.jar
-    if [ $? -ne 0 ]
+    echo $?
+    if [ $? == 0 ]
     then
         echo "[SERVER] Download successful"
     else
