@@ -16,7 +16,7 @@ then
     	URL="https://download.java.net/java/GA/jdk15.0.2/0d1cfde4252546c6931946de8db48ee2/7/GPL/openjdk-15.0.2_linux-x64_bin.tar.gz"
     	echo "[SERVER] Getting OpenJDK15"
 		cd ${SERVER_DIR}/runtime
-        wget -nc -O ${SERVER_DIR}/runtime/jre15.tar.gz "${URL}"
+        wget -nc --show-progress --progress=bar:force:noscroll -O ${SERVER_DIR}/runtime/jre15.tar.gz "${URL}"
 		if [ $? -ne 0 ]
         then
 			echo "[SERVER] Downloaded successful"
@@ -41,7 +41,7 @@ then
 else
 	echo "[SERVER] Could not find executable"
     echo "[SERVER] Getting Forge 1.16.4"
-	wget -nc -O ${SERVER_DIR}/server.jar https://files.minecraftforge.net/maven/net/minecraftforge/forge/1.16.4-35.1.4/forge-1.16.4-35.1.4-installer.jar
+	wget -nc --show-progress --progress=bar:force:noscroll -O ${SERVER_DIR}/server.jar https://files.minecraftforge.net/maven/net/minecraftforge/forge/1.16.4-35.1.4/forge-1.16.4-35.1.4-installer.jar
     if [ $? -ne 0 ]
     then
         echo "[SERVER] Download successful"
