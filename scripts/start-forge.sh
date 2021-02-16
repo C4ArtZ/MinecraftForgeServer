@@ -16,7 +16,8 @@ then
     	URL="https://github.com/AdoptOpenJDK/openjdk15-binaries/releases/download/jdk-15.0.1%2B9/OpenJDK15U-jre_x64_linux_hotspot_15.0.1_9.tar.gz"
     	echo "[SERVER] Getting OpenJDK15"
 		cd ${SERVER_DIR}/runtime
-		if wget -q -nc -O ${SERVER_DIR}/runtime/jre15.tar.gz ${URL}
+        wget -q -nc -O ${SERVER_DIR}/runtime/jre15.tar.gz ${URL}
+		if [ $? -ne 0 ]
         then
 			echo "[SERVER] Downloaded successful"
 		else
@@ -33,11 +34,12 @@ fi
 
 # Executable
 echo "[SERVER] Checking for executable"
-if [! -f $SERVER_DIR/server.jar ]
+if [! -f ${SERVER_DIR}/server.jar ]
 then
 	echo "[SERVER] Could not find executable"
     echo "[SERVER] Getting Forge 1.16.4"
-	if wget https://files.minecraftforge.net/maven/net/minecraftforge/forge/1.16.4-35.1.4/forge-1.16.4-35.1.4-installer.jar
+	wget https://files.minecraftforge.net/maven/net/minecraftforge/forge/1.16.4-35.1.4/forge-1.16.4-35.1.4-installer.jar
+    if [ $? -ne 0 ]
     then
         echo "[SERVER] Download successful"
     else
@@ -52,21 +54,21 @@ fi
 
 
 # Config
-echo "[SERVER] Checking for server properties"
-if [ ! -f ${SERVER_DIR}/server.properties ]
-then
-    echo "[SERVER] Could not find server properties"
-    echo "[SERVER] Getting server properties"
-    if wget https://raw.githubusercontent.com/C4ArtZ/MinecraftForgeServer/master/config/server.properties
-    then
-        echo "[SERVER] Download successful"
-    else
-        echo "[SERVER] Could not download server properties. Going to sleep..."
-        sleep infinity
-    fi
-else
-    echo "[SERVER] Found server properties"
-fi
+# echo "[SERVER] Checking for server properties"
+# if [ ! -f ${SERVER_DIR}/server.properties ]
+# then
+#     echo "[SERVER] Could not find server properties"
+#     echo "[SERVER] Getting server properties"
+#     if wget https://raw.githubusercontent.com/C4ArtZ/MinecraftForgeServer/master/config/server.properties
+#     then
+#         echo "[SERVER] Download successful"
+#     else
+#         echo "[SERVER] Could not download server properties. Going to sleep..."
+#         sleep infinity
+#     fi
+# else
+#     echo "[SERVER] Found server properties"
+# fi
 
 
 # Starting server
