@@ -53,6 +53,7 @@ else
     fi
     echo "[SERVER] Installing Forge"
     chmod 777 ${SERVER_DIR}/server.jar
+    cd ${SERVER_DIR}
     ${SERVER_DIR}/runtime/jre15/bin/java -jar ${SERVER_DIR}/server.jar --installServer
 fi
 
@@ -78,7 +79,7 @@ fi
 # Starting server
 echo "[SERVER] Starting server"
 cd ${SERVER_DIR}
-screen -S Minecraft -L -Logfile ${SERVER_DIR}/masterLog.0 -d -m ${SERVER_DIR}/runtime/jre15/bin/java ${EXTRA_JVM_PARAMETERS} -Xmx${XMX}M -Xms${XMS}M -jar ${SERVER_DIR}/server.jar nogui ${GAME_PARAMETERS}
+screen -S Minecraft -L -Logfile ${SERVER_DIR}/masterLog.0 -d -m ${SERVER_DIR}/runtime/jre15/bin/java ${EXTRA_JVM_PARAMETERS} -Xmx${XMX}M -Xms${XMS}M -jar ${SERVER_DIR}/forge*.jar nogui ${GAME_PARAMETERS}
 sleep 2
 
 
