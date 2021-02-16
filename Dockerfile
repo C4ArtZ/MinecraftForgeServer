@@ -1,7 +1,8 @@
 FROM debian:latest
 
 RUN apt-get update && \
-	apt-get -y install --no-install-recommends screen curl jq unzip && \
+	apt-get -y install --no-install-recommends screen curl jq unzip wget && \
+    apt-get upgrade -y &&\
 	rm -rf /var/lib/apt/lists/*
 
 ENV DATA_DIR="/serverdata"

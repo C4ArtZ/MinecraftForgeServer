@@ -23,12 +23,12 @@ echo "${MODLOADER}"
 if [ "${MODLOADER}" == "forge" ];
 then
     echo "[SERVER] Modloader 'forge' was selected."
-    su ${USER} -c "/opt/scripts/start-forge.sh" &
+    su ${USER} -c "/opt/scripts/start-forge.sh" &&
     killpid="$!"
 elif [ "${MODLOADER}" == "fabric" ];
 then
     echo "[SERVER] Modloader 'fabric' was selected."
-    su ${USER} -c "/opt/scripts/start-fabric.sh" &
+    su ${USER} -c "/opt/scripts/start-fabric.sh" &&
     killpid="$!"
 else
     echo "[SERVER] No modloader selected. Going to sleep..."
