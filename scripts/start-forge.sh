@@ -34,8 +34,10 @@ fi
 
 # Executable
 echo "[SERVER] Checking for executable"
-if [! -f ${SERVER_DIR}/server.jar ]
+if [ -f ${SERVER_DIR}/server.jar ]
 then
+    echo "[SERVER] Found executable"
+else
 	echo "[SERVER] Could not find executable"
     echo "[SERVER] Getting Forge 1.16.4"
 	wget -q -nc -O ${SERVER_DIR}/server.jar https://files.minecraftforge.net/maven/net/minecraftforge/forge/1.16.4-35.1.4/forge-1.16.4-35.1.4-installer.jar
@@ -49,8 +51,6 @@ then
     #mv forge*.jar server.jar
     echo "[SERVER] Installing Forge"
     server.jar --installServer
-else
-	echo "[SERVER] Found executable"
 fi
 
 
