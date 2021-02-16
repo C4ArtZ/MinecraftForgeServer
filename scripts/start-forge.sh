@@ -26,7 +26,7 @@ then
 			sleep infinity
 		fi
 		mkdir ${SERVER_DIR}/runtime/jre15
-        tar --directory ${SERVER_DIR}/runtime/jre15 --strip-components=1 -xvzf ${SERVER_DIR}/runtime/jre15.tar.gz
+        tar --directory ${SERVER_DIR}/runtime/jre15 --strip-components=1 -xzf ${SERVER_DIR}/runtime/jre15.tar.gz
         rm -rf ${SERVER_DIR}/runtime/jre15.tar.gz
         sleep 5
 else
@@ -52,7 +52,8 @@ else
         sleep infinity
     fi
     echo "[SERVER] Installing Forge"
-    ${SERVER_DIR}/runtime/jre15/bin/java -jar server.jar --installServer
+    chmod 777 ${SERVER_DIR}/server.jar
+    ${SERVER_DIR}/runtime/jre15/bin/java -jar ${SERVER_DIR}/server.jar --installServer
 fi
 
 
